@@ -1,0 +1,157 @@
+$analogSize: 200px;
+$analogDialTop: 20px;
+$analogMinutesTop: 35px;
+$analogHourTop: 50px;
+$analogBg: #f7f7f7;
+$analogDigitalBg: #777;
+$analogShadown: inset 0.125em 0.25em 0.5em #0005, -0.25em -0.5em 0.5em $analogBg, 0 0 0.0625em 0.5em $analogDigitalBg, 0 0 0.0625em 0.5625em #000, 0.125em 0.25em 0.5em 0.5em #0004;;
+
+.analog {
+    width: $analogSize;
+    height: $analogSize;
+    border: solid 1px #000;
+    border-radius: 50%;
+    position: relative;
+    background: $analogBg;
+    box-shadow: $analogShadown;
+    font-family: fantasy, Consolas;
+    .digits {
+        position: absolute;
+        width: 90%;
+        height: 90%;
+        top: 5%;
+        left: 5%;
+        .digit {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            font-weight: bold;
+           
+
+            &:before,
+            &:after{
+                content:"";
+                position: absolute;
+                width: 1rem;
+                height: 1rem;
+            }
+            &.vertical{
+                left: calc(50% - 0.5rem);
+            }
+            &.vertical:before {
+                content:"12";
+                top:0;
+                text-align: center;
+            }
+           &.vertical:after {
+                content:"6";
+                bottom:0;
+                text-align: center;
+            }
+            &.horizontal{
+                top: calc(50% - 0.5rem);
+            }
+            &.horizontal:before {
+                content:"9";
+                left:0;
+              
+            }
+            &.horizontal:after {
+                content:"3";
+                right:0;
+                text-align: right;
+            }
+
+            &.line {
+                position:absolute;
+                top:0;
+                left: 50%;
+                width: 1px;
+                height:100%;
+            }
+            &.line:nth-child(2) {
+                transform : rotate(90deg);
+            }
+            
+            &.line:nth-child(3) {
+                transform : rotate(180deg);
+            }  
+
+            &.line:nth-child(4) {
+                transform : rotate(270deg);
+            }  
+
+            &.line:before,
+            &.line:after {
+                content:" | ";
+                top:0;
+                left:0;
+                width:100%;
+                height:100%;
+                font-size: 0.75em;
+                transform:rotate(30deg);
+            } 
+            &.line:after {
+                transform: rotate(60deg);
+            }
+   
+        }
+    }
+
+    .dials {
+        position: absolute;
+        width:100%;
+        height:100%;
+        &:after {
+            content:"";
+            position: absolute;
+            width: 0.5rem;
+            height: 0.5rem;
+            top: calc(50% - 0.5rem);
+            left: calc(50% - 0.5rem);
+            border-radius: 50%;
+            background: $analogBg;
+            border: 0.25rem solid #000;
+        }
+        .dial {
+            position: absolute;
+            left: calc(50% + 2px);
+            width:  ($analogSize / 2) - $analogDialTop;
+            height: ($analogSize / 2) - $analogDialTop;
+            top: $analogDialTop;
+            transform-origin: bottom left;
+            border-left: 4px solid #000;
+            &.hours {
+                width:  ($analogSize / 2) - $analogHourTop;
+                height: ($analogSize / 2) - $analogHourTop;
+                top: $analogHourTop;
+            }
+            &.minutes {
+                width:  ($analogSize / 2) - $analogMinutesTop;
+                height: ($analogSize / 2) - $analogMinutesTop;
+                top: $analogMinutesTop;
+            }
+            &.seconds {
+                border-left: 2px solid #00bcd4;
+            }
+        }
+       
+    }
+
+    .digital {
+        position: absolute;
+        top: 75%;
+        left: 50%;
+        transform: translate(-50%, -75%);
+        padding: 2px 4px;
+        border: 1px solid #000;
+        border-radius: 4px;
+        background:$analogDigitalBg;
+        color: white;
+    }
+
+}
+
+.timeZone {
+    text-align : center;
+}

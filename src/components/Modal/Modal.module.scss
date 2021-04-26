@@ -1,0 +1,113 @@
+.modal {
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1050;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  outline: 0;
+  transition: opacity 0.15s linear;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-dialog {
+  transition: transform 0.5s ease-out;
+  transform: translate(0, -1000%);
+  position: relative;
+  z-index: 1051;
+  width: 100%;
+  margin: 0.5rem;
+  pointer-events: none;
+  max-width: 500px;
+}
+
+.modal-content {
+  pointer-events: auto;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.3rem;
+  outline: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+}
+
+.open {
+  display: block;
+  overflow-x: hidden;
+  overflow-y: auto;
+  opacity: 1;
+  height: 100%;
+
+  .modal-dialog {
+    transform: translate(0, 0);
+  }
+}
+
+
+.close {
+  padding: 1rem 1rem;
+  margin: -1rem -1rem -1rem auto;
+  float: right;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 0.8;
+  text-shadow: 0 1px 0 #fff;
+  opacity: 0.3;
+  transition: opacity 0.5s ease-out, color 0.5s ease-out;
+  background: transparent;
+  border: none;
+  &:hover,
+  &:focus {
+    background: transparent;
+    border: none;
+    opacity: 1;
+    color: #000;
+  }
+}
+
+.modal-header {
+  padding: 1rem 1rem 0.5rem;
+  border-top-left-radius: calc(0.3rem - 1px);
+  border-top-right-radius: calc(0.3rem - 1px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+
+.modal-title {
+  margin: 0;
+  line-height: 1.5;
+  font-size: 1.25rem;
+  font-weight: var(--font-weight-bold);
+}
+
+.modal-body {
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  padding: 0.5rem 1rem 1rem;
+  position: relative;
+}
+
+.modal-footer {
+  padding: 0.75rem;
+  border-top: 1px solid #ddd;
+  border-bottom-right-radius: calc(0.3rem - 1px);
+  border-bottom-left-radius: calc(0.3rem - 1px);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    margin: 1.75rem auto;
+  }
+}
